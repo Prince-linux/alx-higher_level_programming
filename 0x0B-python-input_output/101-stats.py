@@ -3,7 +3,6 @@
 Module for log parsing scripts.
 """
 
-
 import sys
 
 
