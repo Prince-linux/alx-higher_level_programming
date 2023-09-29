@@ -4,14 +4,20 @@
 
 
 def find_peak(list_of_integers):
-    """ This function returns the peak of the list
-    """
-    if (len(list_of_integers) == 0):
+    if not list_of_integers:
         return None
 
-    else:
-        peak = list_of_integers[0]
-        for i in range(len(list_of_integers)):
-            if list_of_integers[i] > peak:
-                peak = list_of_integers[i]
-        return peak
+    left = 0
+    right = len(list_of_integers) - 1
+
+    while left < right:
+        mid = (left + right) // 2
+
+        # Check if the middle element is greater than its neighbors
+        if list_of_integers[mid] > list_of_integers[mid + 1]:
+            right = mid
+        else:
+            left = mid + 1
+
+    # At this point, left and right should be equal, pointing to a peak
+    return list_of_integers[left]
